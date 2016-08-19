@@ -1,0 +1,697 @@
+/* ==========================================================================
+
+Colorz ---------------------------------------------------------------------- 
+
+Red					#C3003F
+Black				#1f1f1f
+Lightgrey			#efefef
+Grey				#d6d6d6
+Dark Grey			#5b5b5b
+
+============================================================================= */
+
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;  
+}
+
+/* ==========================================================================
+   Boilerplate
+   ========================================================================== */
+
+html { overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { font-size: 13px; line-height: 1.231; }
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+::-moz-selection { background: #C3003F; color: #fff; text-shadow: none; }
+::selection { background: #C3003F; color: #fff; text-shadow: none; }
+
+a { color: #C3003F; }
+/*a:visited { color: #666; }*/
+a:hover { color: #000; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+i, em {font-style: italic}
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 85%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ol, ul { list-style: none; }
+img { -ms-interpolation-mode: bicubic; vertical-align: middle; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; *overflow: visible; }
+table button, table input { *overflow: auto; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* ==|== primary styles =====================================================
+   Author: 
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Global
+   ========================================================================== */
+
+body {
+	background: #cac9c6;
+	color: #5b5b5b;
+	font: 11px/1.24 "Trebuchet MS", Trebuchet, Arial, sans-serif;
+}
+
+/* Forms
+   -------------------------------------------------------------------------- */
+
+input, textarea, select, button {
+	font-family: "Trebuchet MS", Trebuchet, Arial, sans-serif;
+	font-size: 11px;
+	color: #5b5b5b;
+	border: solid 1px #c6c6c6;
+	padding: 4px 4px 3px;
+	background: #f9f9f9;
+	vertical-align: middle;
+	outline: 0;
+}
+.ie6 input, .ie6 textarea, .ie6 select {
+	background: #fff;
+}
+input:hover, textarea:hover, select:hover {
+	border: solid 1px #999;
+}
+input:focus, textarea:focus, select:focus {
+	border: solid 1px #999;
+	background: #fff;
+}
+input[type="image"], input[type="checkbox"],
+input[type="radio"], input[type="reset"],
+input.image, input.checkbox,
+input.radio, input.reset {
+	border:0;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+#container, 
+#footer {
+	width: 900px;
+	margin: 0 auto;
+}
+#container {
+	background: #fff;
+}
+#main {
+	padding: 0 20px 30px;
+}
+#main {
+	
+}
+#content-left,
+#content-right {
+	margin-bottom: 40px;
+}
+#content-left {
+	float: left;
+	width: 355px;
+}
+#content-right {
+	float: right;
+	width: 455px;
+}
+#content-bottom {
+	border-top: solid 6px #efefef;
+	clear: both;
+	padding-top: 40px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+#footer {
+	text-align: center;
+	padding: 20px 0 40px;
+	color: #1f1f1f;
+}
+#footer a {
+	color: #1f1f1f;
+	text-decoration: none;
+}
+#footer a:hover {
+	color: #C3003F;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+#header {
+	height: 100px;
+	position: relative;
+	border-bottom: solid 10px #c3003f;
+	background: url(../img/header/header-bg.png) no-repeat 180px 8px;
+}
+
+/* Logo
+   -------------------------------------------------------------------------- */
+
+#logo {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	margin: 0;
+}
+#logo a {
+	width: 160px;
+	height: 60px;
+	background: url(../img/header/logo.png) no-repeat;
+}
+#logo a:hover {
+	background-position: 0 -60px;
+}
+
+
+/* Login form
+   -------------------------------------------------------------------------- */
+
+.login-form {
+	background: #1f1f1f;
+	position: absolute;
+	right: 20px;
+	top: 0;
+	height: 47px;
+	width: 340px;
+	padding: 3px 5px 0 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	behavior: url(PIE.php);
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+	width: 130px;
+}
+.ie6 .login-form input.text,
+.ie6 .login-form input.password {
+	width: 130px;
+}
+.login-form input {
+	margin: 0 5px;
+	padding: 0 3px;
+	height: 22px;
+	line-height: 22px;
+}
+.login-form button {
+	margin: 0 0 0 5px;
+	height: 24px;
+}
+.login-form p {
+	margin: 2px 5px 0;
+}
+.login-form a {
+	color: #fff;
+}
+.login-form a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* Navigation
+   -------------------------------------------------------------------------- */
+
+#nav {
+	position: absolute;
+	bottom: -10px;
+	right: 0;
+	z-index: 10;
+}
+#nav li {
+	float: left;
+	margin: 0 10px;
+	position: relative;
+}
+#nav a {
+	color: #c3003f;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	height: 21px;
+	font-size: 13px;
+	padding: 15px 20px 0;
+	border-bottom: solid 10px #c3003f;
+}
+.ie6 #nav a {
+	float: left;
+}
+.ie6 #nav li li a {
+	float: none;
+}
+#nav a:hover,
+#nav .hover a {
+	color: #1f1f1f;
+	background: #efefef;
+}
+#nav ul {
+	display: none;
+	top: 46px;
+	left: 0;
+	position: absolute;
+	width: 180px;
+	border-bottom: solid 5px #efefef;
+	border-left: solid 5px #efefef;
+	border-right: solid 5px #efefef;
+	z-index: 10;
+}
+#nav li li {
+	float: none;
+	margin: 0;
+	background: #fff;
+}
+#nav li li a,
+#nav .hover li a {
+	border: 0;
+	height: 100%;
+	color: #5b5b5b;
+	font-size: 12px;
+	padding: 5px 0 5px 20px;
+	text-transform: none;
+	background: #fff url(../img/header/nav-list-bg.png) no-repeat 2px -11px;
+}
+#nav li li a:hover {
+	color: #c3003f;
+	background: #efefef url(../img/header/nav-list-bg.png) no-repeat 2px 5px;
+}
+#nav li:hover ul {
+/*	display: block;*/
+}
+
+/* ==========================================================================
+   Newsletter & contact forms
+   ========================================================================== */
+
+.newsletter-form,
+.contact-form {
+	background: #efefef;
+	margin-bottom: 20px;
+	padding: 15px 20px;
+}
+.newsletter-form h2,
+.contact-form h2 {
+	text-transform: uppercase;
+	color: #1f1f1f;
+	font-size: 13px;
+	margin-bottom: 2px;
+}
+.newsletter-form button {
+	margin-left: 20px;
+}
+.newsletter-form fieldset {
+	margin: 3px 0;
+}
+.newsletter-form p {
+	margin: 3px 0 10px;
+}
+.newsletter-form input[type="text"] {
+	width: 190px;
+	float: left;
+	height: 21px;
+	padding: 0 3px;
+}
+.oldie .newsletter-form input[type="text"] {
+	line-height: 21px;
+}
+.ie7 .newsletter-form input[type="text"] {
+	margin-top: 1px;
+}
+.ie6 .newsletter-form input.text {
+	width: 190px;
+	float: left;
+	height: 21px;
+	line-height: 21px;
+	padding: 0 3px;
+}
+.contact-form input[type="text"],
+.contact-form textarea {
+	width: 190px;
+	float: right;
+}
+.ie6 .contact-form input.text,
+.ie6 .contact-form textarea {
+	width: 190px;
+	float: right;
+}
+.contact-form .phone {
+	font-size: 16px;
+	color: #C3003F;
+	border-top: solid 2px #d6d6d6;
+	border-bottom: solid 2px #d6d6d6;
+	text-align: center;
+	margin-top: 10px;
+	padding: 2px 0;
+}
+.contact-form form {
+	width: 360px;
+}
+.contact-form li {
+	margin: 16px 0;
+}
+.contact-form .align-right {
+	margin-bottom: 0;
+	clear: both;
+}
+.contact-form label {
+	display: block;
+	float: left;
+	text-align: right;
+	width: 140px;
+	padding-right: 10px;
+	line-height: 23px;
+	font-size: 12px;
+	color: #1f1f1f;
+}
+.contact-form select {
+	width: 200px;
+	padding: 3px;
+	float: right;
+}
+.contact-form textarea {
+	height: 95px;
+}
+
+/* ==========================================================================
+   Misc
+   ========================================================================== */
+
+/* Headline
+   -------------------------------------------------------------------------- */
+
+.test {
+	height: 110px;
+	line-height: 110px;
+	padding-left: 30px;
+	font-size: 48px;
+	color: #efefef;
+}
+
+/* Paragraphs
+   -------------------------------------------------------------------------- */
+
+.paragraphs {
+	background: #d6d6d6;
+	color: #1f1f1f;
+	padding: 15px 20px;
+}
+.paragraphs h2 {
+	font-size: 16px;
+	border-bottom: solid 2px #efefef;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.paragraphs .bullet {
+	font-size: 20px;
+	line-height: 16px;
+}
+.paragraphs p {
+	margin-bottom: 1em;
+}
+
+/* ==========================================================================
+   News
+   ========================================================================== */
+
+.news-list li {
+	position: relative;
+	padding: 10px 0;
+	border-bottom: solid 5px #efefef;	
+}
+.news-list .noborder {
+	border: 0;
+}
+.news-list img {
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+.news-list h3 {
+	text-transform: uppercase;
+	font-size: 14px;
+}
+.news-list h3 a {
+	text-decoration: none;
+}
+.news-list h3 .bullet {
+	font-size: 20px;
+	line-height: 16px;
+}
+.news-list em {
+	margin-left: 10px;
+}
+.news-list p {
+	font-size: 12px;
+	margin-top: 20px;
+}
+.news-list .more {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+}
+
+/* ==========================================================================
+   Last news
+   ========================================================================== */
+
+.last-news {
+	margin-bottom: 50px;
+}
+.last-news h2 {
+	color: #c3003f;
+	font-size: 16px;
+	margin: 0 0 10px 5px;
+}
+
+/* Slider
+   -------------------------------------------------------------------------- */
+
+.slider-container {
+	position: relative;
+	width: 100%;
+}
+
+.slider {
+	overflow: hidden;
+	position: relative;
+	height: 140px;
+	width: 800px;
+	margin: 0 auto;
+}
+.slider .items {
+	width:20000em;
+	position:absolute;
+}
+.slider li {
+	float: left;
+	margin: 0 5px;
+	width: 190px;
+	display: inline;
+}
+.slider a img {
+	display: block;
+	border: solid 2px #d7d7d7;
+}
+.slider a:hover img {
+	border: solid 2px #c3003f;
+}
+.slider-container .prev,
+.slider-container .next {
+	width: 20px;
+	height: 140px;
+	background: url(../img/arrows-slider.png) no-repeat;
+	top: 0;
+	position: absolute;
+	display: block;
+	text-indent: -999em;
+	overflow: hidden;
+}
+.slider-container .prev {
+	left: 5px;
+}
+.slider-container .next {
+	right: 5px;
+	background-position: 0 -140px;
+}
+.slider-container a:hover.prev {
+	background-position: -20px 0;
+}
+.slider-container a:hover.next {
+	background-position: -20px -140px;
+}
+.slider-container .disabled .prev,
+.slider-container .disabled a:hover.prev {
+	cursor: default;
+	background-position: -40px 0;
+}
+.slider-container .disabled .next,
+.slider-container .disabled a:hover.next {
+	cursor: default;
+	background-position: -40px -140px;
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+.accordion .accordion-title {
+	height: 30px;
+	line-height: 30px;
+	background: url(../img/accordion-title-bg.png) no-repeat;
+	cursor: pointer;
+}
+.accordion h3 {
+	cursor: pointer;
+	font-size: 14px;
+	color: #1f1f1f;
+	padding-left: 20px;
+	background: url(../img/arrows-accordion.png) no-repeat 98% 4px;
+}
+.accordion .current h3 {
+	background-position: 98% -16px;
+}
+.accordion h3:hover {
+	color: #c3003f;
+}
+.accordion li {
+	margin: 10px 0;
+	overflow: hidden;
+}
+.accordion .pane {
+	padding: 15px 20px 0;
+	font-size: 12px;
+}
+
+/* ==========================================================================
+   Global classes
+   ========================================================================== */
+
+a.button {
+	display: block;
+	text-align: center;
+	height: 28px;
+	line-height: 28px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	border: solid 1px #c6c6c6;
+	background: url(../img/news-button-bg.png) repeat-x;
+}
+a:hover.button {
+	color: #fff;
+	background-position: 0 -28px;
+}
+
+button { 
+	position: relative;
+	background: url(../img/button-submit-bg.png) repeat-x;
+	height: 23px;
+	line-height: 23px;
+	padding: 0 5px;
+	color: #1f1f1f;
+	border: solid 1px #c6c6c6;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+	cursor: pointer;
+}
+button:hover {
+	background-position: 0 -22px;
+}
+button span {
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+}
+
+/* Buttons for IE */
+
+.oldie button {
+	position: static;
+	border: 0;
+	padding: 0 5px 0 0;
+	background: url(../img/button-ie-bg.png) no-repeat right -50px;
+}
+.oldie button span {
+	height: 23px;
+	padding: 0 0 0 5px;
+	border: 0;
+	background: url(../img/button-ie-bg.png) no-repeat left top;
+}
+.oldie button:hover,
+.oldie button.hover {
+	background-position: right -75px;
+}
+	
+.oldie button:hover span,
+.oldie button.hover span {
+	background-position: left -25px;
+}
+.rounded {
+	zoom: 1;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	position: relative;
+	behavior: url(PIE.php);
+}
+.align-right {
+	text-align: right;
+}
+
+/* ==========================================================================
+   Non-semantic helpers
+   ========================================================================== */
+
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+.hidden { display: none !important; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

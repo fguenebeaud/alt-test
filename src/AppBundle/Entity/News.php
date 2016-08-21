@@ -41,7 +41,7 @@ class News
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255, nullable=false)
-     * @Assert\Length(min = 8, max = 255)
+     * @Assert\Length(min = 3, max = 255)
      * @Assert\NotBlank()
      */
     private $title;

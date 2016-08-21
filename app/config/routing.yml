@@ -2,5 +2,17 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+contact:
+    resource: "@AppBundle/Controller/ContactController.php"
+    type:     annotation
+
+news:
+    resource: "@AppBundle/Controller/NewsController.php"
+    type:     annotation
+
+newsletter:
+    resource: "@AppBundle/Controller/NewsletterController.php"
+    type:     annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

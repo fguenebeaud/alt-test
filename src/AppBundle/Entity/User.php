@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -23,8 +22,6 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
-     * Identifiant
-     *
      * @var integer $id
      *
      * @ORM\Id()
@@ -32,8 +29,6 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    
 
     public function __construct()
     {
@@ -46,5 +41,17 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $salt
+     *
+     * @return $this
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
     }
 }

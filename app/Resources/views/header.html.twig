@@ -1,0 +1,19 @@
+<div id="header">
+    <h1 id="logo"><a href="/" class="ir">Altima - interactive ideas</a></h1>
+
+
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+    {% else %}
+        {% render(controller("FOSUserBundle:Security:login")) %}
+    {% endif %}
+    <ul id="nav" class="clearfix">
+        <li><a href="/">Accueil</a></li>
+        <li>
+            <a href="#">Actualités</a>
+        </li>
+        <li><a href="#">Qui sommes-nous ?</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</div>

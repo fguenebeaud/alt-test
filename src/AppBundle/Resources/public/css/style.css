@@ -215,7 +215,7 @@ input.radio, input.reset {
 	position: absolute;
 	right: 20px;
 	top: 0;
-	height: 47px;
+	height: 57px;
 	width: 340px;
 	padding: 3px 5px 0 5px;
 	-webkit-border-radius: 0 0 5px 5px;
@@ -695,3 +695,18 @@ button span {
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+label.remember {
+	color: white;
+}
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.alert.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}

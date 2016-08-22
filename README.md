@@ -3,7 +3,7 @@ ALTIMA - Test d'entrée
 
 Ceci représente le test de développement pour Altima, réalisé par Florent GUENEBEAUD
 
-- Durée du projet:  8h30
+- Durée du projet:  9h (une demie journée + une journée pour l'installation de l'environnement)
 - Login après installation du projet : username: admin / password: test   rôle: ROLE_ADMIN
 - Contenu du projet:
 

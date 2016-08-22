@@ -1,0 +1,61 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Contact</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ path('contact_new')}}" title="Add contact" class="btn btn-success">
+                    <i class="fa fa-plus"></i>&nbsp;Ajouter
+                </a>
+                <div>&nbsp;</div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Liste des contacts
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Créer le</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>email</th>
+                                <th>Objet</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for contact in contacts %}
+                            <tr class="{{ cycle(['odd', 'even'], loop.index0) }} gradeX">
+                                <td>{{ contact.id }}</td>
+                                <td>{{ contact.createdAt|date('d/m/Y H:i') }}</td>
+                                <td>{{ contact.lastname }}</td>
+                                <td>{{ contact.firstname }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.objects(contact.object) }}</td>
+                                <td>
+                                    <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a href="{{ path('contact_new')}}" title="Add contact" class="btn btn-success">
+                    <i class="fa fa-plus"></i>&nbsp;Ajouter
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

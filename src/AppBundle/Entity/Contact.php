@@ -216,14 +216,23 @@ class Contact
     }
 
     /**
-     * @return array
+     * @param null $object
+     * @return string|array
      */
-    static function getObjects()
+    static function getObjects($object = null)
     {
-        return [
+        $objects = [
             self::OBJET_RECRUTEMENT => 'Recrutement',
             self::OBJET_DEMANDE_RENSEIGNEMENT => 'Demande de renseignement',
             self::OBJET_AUTRE => 'Autre',
         ];
+
+        if ($object && array_key_exists($object, $objects)) {
+            return $objects[$object];
+        } elseif ($object) {
+            return '';
+        } else {
+            return $objects;
+        }
     }
 }

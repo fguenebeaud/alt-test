@@ -30,7 +30,7 @@ class ContactType extends AbstractType
                 'firstname',
                 'text',
                 array(
-                    'label' => 'Prénom',
+                    'label' => 'Prénom *',
                     'required' => true,
                 )
             )
@@ -38,7 +38,7 @@ class ContactType extends AbstractType
                 'lastname',
                 'text',
                 array(
-                    'label' => 'Nom',
+                    'label' => 'Nom *',
                     'required' => true,
                 )
             )
@@ -46,7 +46,7 @@ class ContactType extends AbstractType
                 'email',
                 'text',
                 array(
-                    'label' => 'eMail',
+                    'label' => 'eMail *',
                     'required' => true,
                 )
             )
@@ -54,7 +54,7 @@ class ContactType extends AbstractType
                 'content',
                 'textarea',
                 array(
-                    'label' => 'Contenu',
+                    'label' => 'Contenu *',
                     'required' => true,
                 )
             )

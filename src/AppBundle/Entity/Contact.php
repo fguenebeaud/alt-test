@@ -216,10 +216,10 @@ class Contact
     }
 
     /**
-     * @param null $object
+     * @param null|integer $object
      * @return string|array
      */
-    static function getObjects($object = null)
+    public static function getObjects($object = null)
     {
         $objects = [
             self::OBJET_RECRUTEMENT => 'Recrutement',

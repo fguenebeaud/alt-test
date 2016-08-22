@@ -1,7 +1,7 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block body %}
-    <div id="page-wrapper">
+    <div>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Contact</h1>
@@ -45,6 +45,7 @@
                                 <td>{{ contact.objects(contact.object) }}</td>
                                 <td>
                                     <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    <a href="{{ path('contact_show', {'id': contact.id}) }}" class="btn btn-default"><i class="fa fa-search"></i></a>
                                 </td>
                             </tr>
                             {% endfor %}

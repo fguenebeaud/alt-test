@@ -12,7 +12,9 @@ use AppBundle\Entity\News;
 use AppBundle\Type\NewsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class NewsController
@@ -21,28 +23,8 @@ use Symfony\Component\HttpFoundation\Request;
 class NewsController extends Controller
 {
     /**
-     * @param News $news
-     * @return \Symfony\Component\Form\Form
-     */
-    private function    createCreateForm(News $news)
-    {
-        $form = $this->createForm(new NewsType(), $news, [
-            'action' => $this->generateUrl('news_create'),
-            'method' => 'PUT'
-        ]);
-
-        $form->add(
-            'submit',
-            'submit',
-            array('label' => 'Valider', 'attr' => ['class' => 'btn btn-sm btn-success'])
-        );
-
-        return $form;
-    }
-
-
-    /**
      * @Route("/admin/news/new", name="news_new")
+     * @return Response
      */
     public function newAction()
     {
@@ -56,6 +38,8 @@ class NewsController extends Controller
 
     /**
      * @Route("/admin/news/create", name="news_create")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function createAction(Request $request)
     {
@@ -81,7 +65,12 @@ class NewsController extends Controller
             $entity->setAuthor($this->getUser());
             $em->persist($entity);
             $em->flush();
-            // TODO Créer un flashbag
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'La news a été créée avec succès.'
+            );
+
             return $this->redirect($this->generateUrl('news'));
         }
 
@@ -93,6 +82,7 @@ class NewsController extends Controller
 
     /**
      * @Route("/admin/news", name="news")
+     * @return Response
      */
     public function indexAction()
     {
@@ -105,31 +95,85 @@ class NewsController extends Controller
 
     /**
      * @Route("/admin/news/delete/{id}", requirements={"id" = "\d+"}, name="news_delete")
+     * @param integer $id
+     * @return RedirectResponse
      */
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $news = $em->getRepository('AppBundle:News')->find($id);
+        if ($news) {
+            $em->remove($news);
+            $em->flush();
+        }
 
-        $em->remove($news);
-        $em->flush();
-
-        //TODO Ajouter un flashbag
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'La news a été supprimée avec succès.'
+        );
 
         return $this->redirect($this->generateUrl('news'));
+    }
+
+    /**
+     * @Route("/admin/news/edit/{id}", requirements={"id" = "\d+"}, name="news_edit")
+     * @param Request $request
+     * @param integer $id
+     * @return RedirectResponse|Response
+     */
+    public function editAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $news = $em->getRepository('AppBundle:News')->find($id);
+        if (!($news instanceof News)) {
+            throw $this->createNotFoundException('Unable to find News entity.');
+        }
+
+        $editForm = $this->createEditForm($news);
+
+        if ($request->getMethod() == 'POST') {
+            $editForm->handleRequest($request);
+            if ($editForm->isValid()) {
+                if ($news->getPicture()) {
+                    // Get picture
+                    $file = $news->getPicture();
+                    // Generate a unique name for the file before saving it
+                    $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                    // Move the file to the directory where brochures are stored
+                    $file->move($this->getParameter('picture_directory'), $fileName);
+
+                    $news->setPicture($fileName);
+                }
+
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'La news a été modifiée avec succès.'
+                );
+
+                return $this->redirect($this->generateUrl('news'));
+            }
+        }
+
+        return $this->render('@App/News/edit.html.twig', array(
+            'edit_form' => $editForm->createView(),
+            'news'      => $news,
+        ));
     }
 
     /**
      * @param News $news
      * @return \Symfony\Component\Form\Form
      */
-    private function createEditForm(News $news)
+    private function createCreateForm(News $news)
     {
-        $form = $this->createForm(new NewsType(), $news, array(
-            'action' => $this->generateUrl('news_edit', array('id' => $news->getId())),
-            'method' => 'POST'
-        ));
+        $form = $this->createForm(new NewsType(), $news, [
+            'action' => $this->generateUrl('news_create'),
+            'method' => 'PUT',
+        ]);
 
         $form->add(
             'submit',
@@ -141,47 +185,22 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/admin/news/edit/{id}", requirements={"id" = "\d+"}, name="news_edit")
+     * @param News $news
+     * @return \Symfony\Component\Form\Form
      */
-    public function editAction(Request $request, $id)
+    private function createEditForm(News $news)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $news = $em->getRepository('AppBundle:News')->find($id);
-        if (!$news) {
-            throw $this->createNotFoundException('Unable to find News entity.');
-        }
-
-        $editForm = $this->createEditForm($news);
-
-        if ($request->getMethod() == 'POST')
-        {
-            $editForm->handleRequest($request);
-            if ($editForm->isValid()) {
-                if ($news->getPicture()) {
-                    // Get picture
-                    $file = $news->getPicture();
-                    // Generate a unique name for the file before saving it
-                    $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                    // Move the file to the directory where brochures are stored
-                    $file->move(
-                        $this->getParameter('picture_directory'),
-                        $fileName
-                    );
-
-                    $news->setPicture($fileName);
-                }
-
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('news'));
-                // TODO Créer un flashbag
-            }
-        }
-
-        return $this->render('@App/News/edit.html.twig', array(
-            'edit_form' => $editForm->createView(),
-            'news'      => $news,
+        $form = $this->createForm(new NewsType(), $news, array(
+            'action' => $this->generateUrl('news_edit', array('id' => $news->getId())),
+            'method' => 'POST',
         ));
+
+        $form->add(
+            'submit',
+            'submit',
+            array('label' => 'Valider', 'attr' => ['class' => 'btn btn-sm btn-success'])
+        );
+
+        return $form;
     }
 }

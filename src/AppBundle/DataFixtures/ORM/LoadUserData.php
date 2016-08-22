@@ -46,7 +46,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                 'email'     => 'admin@admin.com',
                 'roles'     => [
                     'ROLE_ADMIN',
-                ]
+                ],
             ),
         );
 

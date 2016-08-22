@@ -11,4 +11,3 @@ use Doctrine\ORM\EntityRepository;
 class NewsletterRepository extends EntityRepository
 {
 }
-

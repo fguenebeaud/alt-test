@@ -16,7 +16,11 @@
     <body>
         <div id="container">
             {% include 'header.html.twig' %}
-
+            {% block flash_messages %}
+                {% for flash_message in app.session.flashbag.get('success') %}
+                    <h3>{{ flash_message }}</h3>
+                {% endfor %}
+            {% endblock %}
             {% block body %}{% endblock %}
 
             {% include 'footer.html.twig' %}

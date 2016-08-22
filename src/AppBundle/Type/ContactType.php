@@ -30,7 +30,7 @@ class ContactType extends AbstractType
                 'firstname',
                 'text',
                 array(
-                    'label' => 'Prénom *',
+                    'label' => 'Prénom *:',
                     'required' => true,
                 )
             )
@@ -38,7 +38,7 @@ class ContactType extends AbstractType
                 'lastname',
                 'text',
                 array(
-                    'label' => 'Nom *',
+                    'label' => 'Nom *:',
                     'required' => true,
                 )
             )
@@ -46,7 +46,7 @@ class ContactType extends AbstractType
                 'email',
                 'text',
                 array(
-                    'label' => 'eMail *',
+                    'label' => 'Adresse e-mail *:',
                     'required' => true,
                 )
             )
@@ -54,13 +54,14 @@ class ContactType extends AbstractType
                 'content',
                 'textarea',
                 array(
-                    'label' => 'Contenu *',
+                    'label' => 'Votre message *:',
                     'required' => true,
                 )
             )
-        ->add('object', ChoiceType::class, [
-            'choices'  => Contact::getObjects(),
-        ]);
+            ->add('object', ChoiceType::class, [
+                'label'    => 'Objet du message *:',
+                'choices'  => Contact::getObjects(),
+            ]);
     }
     /**
      * {@inheritdoc}

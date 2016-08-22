@@ -17,10 +17,10 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class loadNewsData
+ * Class LoadNewsData
  * @package AppBundle\DataFixtures\ORM
  */
-class loadNewsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadNewsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface Container

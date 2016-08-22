@@ -1,0 +1,72 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Visualisation d'un contact</h1>
+            </div>
+        </div>
+        <a href="{{ path('contact_new')}}" title="Add contact" class="btn btn-success">
+            <i class="fa fa-plus"></i>&nbsp;Ajouter
+        </a>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        Prénom:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.firstname }}
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Nom:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.lastname }}
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Email:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.email }}
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Créer le:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.createdAt|date('d/m/Y H:i') }}
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Objet:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.objects(entity.object) }}
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Message:
+                    </div>
+                    <div class="col-md-9">
+                        {{ entity.content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

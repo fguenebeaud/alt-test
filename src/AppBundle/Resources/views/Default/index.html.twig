@@ -6,37 +6,34 @@
             <div class="test">Test de développement</div>
 
             <div id="content-left">
-                <form method="post" action="?" class="newsletter-form rounded">
+                {{ form_start(newsletter_form, {'attr': {'class': 'newsletter-form rounded'}}) }}
                     <h2>La newsletter</h2>
                     <p>L'actu et les bonnes affaires à ne pas manquer</p>
                     <fieldset class="clearfix">
-                        <input type="text" value="Votre adresse e-mail" name="email" class="autoclear" /><button type="submit"><span>OK</span></button>
+                        {{ form_widget(newsletter_form.email, {'attr': {'class': 'autoclear', 'placeholder': 'Votre adresse email...'}}) }}{{ form_widget(newsletter_form.submit) }}
                     </fieldset>
-                </form>
+                    <div class="input-group has-error">
+                        {{ form_errors(newsletter_form.email) }}
+                    </div>
+                {{ form_end(newsletter_form) }}
 
              <div class="news-list">
                  <ul>
-                     <li class="clearfix">
-                         <a href="#"><img src="img/sample/news-1.jpg" alt="News 1" width="160" height="140" /></a>
-                         <h3><a href="#"><span class="bullet">&bull;</span> Blog CRM</a></h3>
-                         <em>25/05/2010</em>
-                         <a href="#" class="more">En savoir plus >></a>
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-                     </li>
-                     <li class="clearfix">
-                         <a href="#"><img src="img/sample/news-2.jpg" alt="News 2" width="160" height="140" /></a>
-                         <h3><a href="#"><span class="bullet">&bull;</span> Altima sur iPhone</a></h3>
-                         <em>20/04/2010</em>
-                         <a href="#" class="more">En savoir plus >></a>
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-                     </li>
-                     <li class="clearfix noborder">
-                         <a href="#"><img src="img/sample/news-3.jpg" alt="News 3" width="160" height="140" /></a>
-                         <h3><a href="#"><span class="bullet">&bull;</span> Altima déménage</a></h3>
-                         <em>12/04/2010</em>
-                         <a href="#" class="more">En savoir plus >></a>
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-                     </li>
+                     {% for new in news|slice(0, 3) %}
+                         <li class="clearfix">
+                             <a href="#">
+                                 {% if new.picture %}
+                                     <img width="160" height="140" src="{{ asset('uploads/' ~ new.picture)  }}" alt="picture_{{ new.id }}">
+                                 {% else %}
+                                     <img width="160" height="140" src="{{ asset('bundles/app/img/sample/news-1.jpg' ~ new.picture)  }}" alt="picture_{{ new.id }}">
+                                 {% endif %}
+                             </a>
+                             <h3><a href="#"><span class="bullet">&bull;</span> {{ new.title }}</a></h3>
+                             <em>{{ new.createdAt|date('d/m/Y H:i') }}</em>
+                             <a href="#" class="more">En savoir plus >></a>
+                             <p>{{ new.content|slice(0, 130) }}</p>
+                         </li>
+                     {% endfor %}
                  </ul>
                  <a href="#" class="button">Voir toutes les actualités</a>
              </div>
@@ -47,39 +44,38 @@
                 <h2>Contactez-nous par téléphone ou par mail</h2>
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
                 <p class="phone">03 28 330 830</p>
-                <form method="post" action="?">
+                {{ form_start(contact_form) }}
                     <ul>
                         <li class="clearfix">
-                            <label for="lastname">Nom * :</label>
-                            <input type="text" id="lastname" name="lastname" />
+                            {{ form_label(contact_form.lastname) }}
+                            {{ form_widget(contact_form.lastname) }}
                         </li>
+                        <li>{{ form_errors(contact_form.lastname) }}</li>
                         <li class="clearfix">
-                            <label for="firstname">Prénom * :</label>
-                            <input type="text" id="firstname" name="firstname" />
+                            {{ form_label(contact_form.firstname) }}
+                            {{ form_widget(contact_form.firstname) }}
                         </li>
+                        <li>{{ form_errors(contact_form.firstname) }}</li>
                         <li class="clearfix">
-                            <label for="email">Adresse e-mail * :</label>
-                            <input type="text" id="email" name="email" />
+                            {{ form_label(contact_form.email) }}
+                            {{ form_widget(contact_form.email) }}
                         </li>
+                        <li>{{ form_errors(contact_form.email) }}</li>
                         <li class="clearfix">
-                            <label for="object">Objet du message * :</label>
-                            <select id="object" name="object">
-                                <option></option>
-                                <option>Demande de renseignement</option>
-                                <option>Recrutement</option>
-                                <option>Autre</option>
-                            </select>
+                            {{ form_label(contact_form.object) }}
+                            {{ form_widget(contact_form.object) }}
                         </li>
+                        <li>{{ form_errors(contact_form.object) }}</li>
                         <li class="clearfix">
-                            <label for="message">Message :</label>
-                            <textarea id="message" name="message"></textarea>
-                            <p class="align-right">* Champs obligatoires</p>
+                            {{ form_label(contact_form.content) }}
+                            {{ form_widget(contact_form.content) }}
                         </li>
+                        <li>{{ form_errors(contact_form.content) }}</li>
                         <li class="align-right ">
-                            <button type="submit"><span>Envoyer</span></button>
+                            {{ form_widget(contact_form.submit) }}
                         </li>
                     </ul>
-                </form>
+                {{ form_end(contact_form) }}
             </div>
             <div class="paragraphs rounded box">
                 <h2><span class="bullet">&bull;</span> Les paragraphes</h2>
@@ -94,24 +90,15 @@
                 <div class="slider-container">
                     <div class="slider">
                         <ul class="items">
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/1" alt="Slide 1" /></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/2" alt="Slide 1" /></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/3" alt="Slide 1" /></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/4" alt="Slide 1" /></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/5" alt="Slide 1" /></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="http://lorempixel.com/186/136/nature/6" alt="Slide 1" /></a>
-                            </li>
+                            {% for new in news %}
+                                <li>
+                                    {% if new.picture %}
+                                        <a href="#"><img height="136" width="186" src="{{ asset('uploads/' ~ new.picture)  }}" alt="Slide {{ new.id }}" /></a>
+                                    {% else %}
+                                        <a href="#"><img height="136" width="186" src="http://lorempixel.com/186/136/nature/1" alt="Slide {{ new.id }}" /></a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <span><a href="javascript:void(0);" class="prev">Précédent</a></span>

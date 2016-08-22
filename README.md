@@ -1,68 +1,35 @@
-Symfony Standard Edition
+ALTIMA - Test d'entrée
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Ceci représente le test de développement pour Altima, réalisé par Florent GUENEBEAUD
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+- Durée du projet:  8h30
+- Login après installation du projet : username: admin / password: test   rôle: ROLE_ADMIN
+- Contenu du projet:
 
-What's inside?
+  * Back Office permettant de gérer les newsletter ( Ajout / Suppression / Liste ), les contact ( Ajout / Suppression / Vue / liste ) et les news ( Ajout / Suppression / Edition / liste ) (route /admin)
+
+  * Front office fourni, avec les formulaire de contact et newsletter dynamique ainsi que la partie Connexion en haut à droite qui permet de se connecter au back office. les news sont dynamique
+
+    IMPORTANT : sur le front, les flashmessages ( messages succès ) apparaissent en haut de la page, au dessus de Altima
+
+  Pourquoi avoir choisi Symfony ?
+
+  Le framework est complet et apporte de nombreux éléments dans sa librairie, outre les bundles tel que les dataFixtures qui permettent de créer un jeu de données de test,
+  ou bien FOSUser qui après un peu de temps pour configurer la connexion est utilisable assez simplement sans ligne de code supplémentaire.
+  Par ailleurs, la gestion des formulaire ( et leurs validations ) est géré simplement avec les annotations fourni par Symfony , ce qui en soit est plus rapide. Enfin on utilise également la puissance de Doctrine avec ses entités mappé directement grâce aux classes PHP (via annotation)
+
+  Concernant la lisibilité, le framework est un framework MVC ( Modèle , Vue , Contrôleur ), ce qui permet de séparé ces trois couches et ainsi retrouver chaque élément dans un dossier différent ( les contrôleurs dans Controller etc ) cela permet une certaine maintenabilité et de débuguer plus rapidement
+
+Installation
 --------------
 
-The Symfony Standard Edition is configured with the following defaults:
+Commandes
 
-  * An AppBundle you can use to start coding;
+  * php composer.phar install
 
-  * Twig as the only configured template engine;
+  * php app/console doctrine:database:create
 
-  * Doctrine ORM/DBAL;
+  * php app/console doctrine:schema:update --force
 
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.8/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.8/book/doctrine.html
-[8]:  https://symfony.com/doc/2.8/book/templating.html
-[9]:  https://symfony.com/doc/2.8/book/security.html
-[10]: https://symfony.com/doc/2.8/cookbook/email.html
-[11]: https://symfony.com/doc/2.8/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
+  * php app/console doctrine:fixtures:load

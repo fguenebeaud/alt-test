@@ -16,10 +16,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\Contact;
 
 /**
- * Class loadContactData
+ * Class LoadContactData
  * @package AppBundle\DataFixtures\ORM
  */
-class loadContactData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadContactData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface Container

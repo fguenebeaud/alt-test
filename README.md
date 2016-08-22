@@ -28,6 +28,10 @@ Ceci représente le test de développement pour Altima, réalisé par Florent GU
 Installation
 --------------
 
+Prérequis
+
+  * composer.phar
+
 Commandes
 
   * php composer.phar install
